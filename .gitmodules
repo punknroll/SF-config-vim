@@ -69,7 +69,7 @@
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule ".vim/bundle/vim-sf-utils"]
 	path = .vim/bundle/vim-sf-utils
-	url = https://punknroll@github.com/punknroll/vim-sf-utils.git
+	url = git@github.com:punknroll/vim-sf-utils.git
 [submodule "vim-sf-utils"]
 	path = vim-sf-utils
 	url = git@github.com:punknroll/vim-sf-utils.git
