@@ -1,0 +1,114 @@
+
+set wildmode=list:full
+
+colorscheme tolerable
+"colorscheme kate 
+set number
+"set nolist
+set background=light
+
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+
+set shiftwidth=4    " Indents will have a width of 4
+
+set softtabstop=4   " Sets the number of columns for a TAB
+
+set expandtab       " Expand TABs to spaces
+
+set modeline
+set ls=2
+
+" incasesensitve search
+set ic
+" history for buffers
+set hidden
+
+set wrap " wrap long lines
+
+"au BufNewFile,BufRead *.tpl set filetype=ezp
+autocmd FileType text setlocal textwidth=78
+"let g:DisableAutoPHPFolding = 1
+set nofoldenable  				" don't auto fold code
+let mapleader = '\'
+
+" file command completion mit tab
+set wildmenu
+
+
+let g:CommandTMaxFile = 200000
+set wildignore+=*.jpg,*.gif,*.png,.git,var
+
+" praktisches Kommentieren
+map ,# :s/^/#/<CR> <Esc>:nohlsearch <CR>
+map ,/ :s/^/\/\//<CR> <Esc>:nohlsearch <CR>
+map ,> :s/^/> /<CR> <Esc>:nohlsearch<CR>
+map ," :s/^/\"/<CR> <Esc>:nohlsearch<CR>
+map ,% :s/^/%/<CR> <Esc>:nohlsearch<CR>
+map ,! :s/^/!/<CR> <Esc>:nohlsearch<CR>
+map ,; :s/^/;/<CR> <Esc>:nohlsearch<CR>
+map ,- :s/^/--/<CR> <Esc>:nohlsearch<CR>
+map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR> <Esc>:nohlsearch<CR>
+
+" wrapping comments
+map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR> <Esc>:nohlsearch<CR>
+map ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR><Esc>:nohlsearch <CR>
+map ,< :s/^\(.*\)$/<!-- \1 -->/<CR> <Esc>:nohlsearch<CR>
+map ,d :s/\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR> <Esc>:nohlsearch<CR>
+
+
+
+syntax on " syntax highlighting
+set mouse=a " automatically enable mouse usage
+scriptencoding utf-8
+" set autowrite " automatically write a file when leaving a modified buffer
+set shortmess+=filmnrxoOtT " abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
+" set virtualedit=onemore " allow for cursor beyond last character
+set history=1000 " Store a ton of history (default is 20)
+set spell " spell checking on
+"set hidden " allow buffer switching without saving
+
+if has('persistent_undo')
+	"set undofile "so is persistent undo ...
+	set undolevels=1000 "maximum number of changes that can be undone
+	set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+endif
+set showmode                    " display the current mode
+
+" Remove trailing whitespaces and ^M chars
+"autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+let g:DisableAutoPHPFolding = 1
+
+" set the names of flags
+"let tlist_php_settings = 'php;c:class;f:function;d:constant'
+" close all folds except for current file
+"let Tlist_File_Fold_Auto_Close = 1
+" make tlist pane active when opened
+"let Tlist_GainFocus_On_ToggleOpen = 1
+" width of window
+"let Tlist_WinWidth = 40
+" close tlist when a selection is made
+"let Tlist_Close_On_Select = 1
+filetype plugin on
+au FileType php set keywordprg=:help
+
+" show nasty nbsp from copy paste
+set lcs=nbsp:%
+
+" disable arrow keys to learn navigation
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+
