@@ -111,4 +111,7 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-
+"https://github.com/stephpy/vim-phpdoc/blob/master/plugin/phpdoc.vim
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <C-P> :call PhpDocSingle()<CR> 
+vnoremap <C-P> :call PhpDocRange()<CR>

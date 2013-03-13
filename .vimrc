@@ -32,7 +32,7 @@
  Bundle 'hallettj/jslint.vim.git'
  Bundle 'kate.vim'
  Bundle 'https://github.com/drwX/php-manual.git'
- Bundle 'PIV'
+" Bundle 'PIV'
  Bundle 'https://github.com/rstacruz/sparkup.git'
  Bundle 'taglist.vim'
  Bundle 'tolerable.vim'
@@ -47,6 +47,8 @@
  Bundle 'FuzzyFinder'
  " non github repos
  Bundle 'git://git.wincent.com/command-t.git'
+ Bundle 'https://github.com/scrooloose/syntastic.git'
+ Bundle 'https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim'
  " ...
 
  filetype plugin indent on     " required!
