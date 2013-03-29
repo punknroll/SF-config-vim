@@ -8,9 +8,9 @@ set number
 set background=light
 
 set tabstop=4       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
+" Still it is a \t. It is just that
+" Vim will interpret it to be having
+" a width of 4.
 
 set shiftwidth=4    " Indents will have a width of 4
 
@@ -24,8 +24,10 @@ set ls=2
 set list            " show hidden characters
 set listchars=nbsp:~    "show strange nbsp chars from text copied out of the web
 
+set tw=80           "set text with and break lines
+
 " incasesensitve search
-set ic
+" set ic
 " history for buffers
 set hidden
 
@@ -75,9 +77,9 @@ set spell " spell checking on
 "set hidden " allow buffer switching without saving
 
 if has('persistent_undo')
-	"set undofile "so is persistent undo ...
-	set undolevels=1000 "maximum number of changes that can be undone
-	set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+    "set undofile "so is persistent undo ...
+    set undolevels=1000 "maximum number of changes that can be undone
+    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 endif
 set showmode                    " display the current mode
 
@@ -130,6 +132,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_WinWidth = 40
 " close tlist when a selection is made
 let Tlist_Close_On_Select = 0
+let Tlist_Show_One_File = 1
 
 "youcompleteme
 
