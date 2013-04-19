@@ -1,8 +1,10 @@
 
 set wildmode=list:full
 
-colorscheme tolerable
+" colorscheme tolerable
 "colorscheme kate 
+" dark theme
+colorscheme vividchalk
 set number
 "set nolist
 set background=light
@@ -13,9 +15,7 @@ set tabstop=4       " The width of a TAB is set to 4.
 " a width of 4.
 
 set shiftwidth=4    " Indents will have a width of 4
-
 set softtabstop=4   " Sets the number of columns for a TAB
-
 set expandtab       " Expand TABs to spaces
 
 set modeline
@@ -24,10 +24,10 @@ set ls=2
 set list            " show hidden characters
 set listchars=nbsp:~    "show strange nbsp chars from text copied out of the web
 
-set tw=80           "set text with and break lines
+"set tw=80           "set text with and break lines
 
 " incasesensitve search
-" set ic
+set ic
 " history for buffers
 set hidden
 
@@ -111,15 +111,19 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
 
 "https://github.com/stephpy/vim-phpdoc/blob/master/plugin/phpdoc.vim
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR>
+"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
+"nnoremap <C-P> :call PhpDocSingle()<CR> 
+"vnoremap <C-P> :call PhpDocRange()<CR>
+" imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+inoremap <C-P> <ESC>:call PhpDoc()<CR>i 
+nnoremap <C-P> :call PhpDoc()<CR> 
+vnoremap <C-P> :call PhpDoc()<CR>
 
 "taglist
 " set the names of flags
