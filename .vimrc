@@ -29,7 +29,7 @@ Bundle 'cperl82/bufexplorer.git'
 Bundle 'checksyntax-B'
 Bundle 'eZVim'
 Bundle 'hallettj/jslint.vim.git'
-Bundle 'kate.vim'
+"Bundle 'kate.vim'
 Bundle 'https://github.com/drwX/php-manual.git'
 "Bundle 'PIV'
 "Bundle 'git://github.com/spf13/PIV.git'
@@ -48,12 +48,39 @@ Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 " Bundle 'https://github.com/scrooloose/syntastic.git'
-Bundle 'https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim'
+"Bundle 'https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim'
+Bundle "https://github.com/tobyS/vmustache"
+Bundle "https://github.com/SirVer/ultisnips"
+Bundle 'tobyS/pdv'
 Bundle 'git://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
 Bundle "pangloss/vim-javascript"
 " color themes
 Bundle "https://github.com/tpope/vim-vividchalk.git" 
+Bundle "https://github.com/sjl/badwolf.git"
+Bundle "https://github.com/nielsmadan/harlequin.git"
+Bundle "https://github.com/scrooloose/nerdtree.git"
 " ...
+" phpQA tools
+"Bundle 'joonty/vim-phpqa.git'
+
+" delete buffers without closing the window
+Bundle "https://github.com/moll/vim-bbye"
+
+"csslint
+"Bundle "https://github.com/vim-scripts/csslint.vim"
+
+Bundle "https://github.com/othree/xml.vim"
+Bundle "https://github.com/scrooloose/syntastic"
+"git
+Bundle "https://github.com/motemen/git-vim"
+"git diff
+Bundle 'airblade/vim-gitgutter'
+
+".vimrc for every project
+Bundle "https://github.com/AD7six/vim-independence"
+
+" phpfolding
+Bundle 'https://github.com/vim-scripts/phpfolding.vim'
 
 filetype plugin indent on     " required!
 

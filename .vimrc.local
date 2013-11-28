@@ -4,7 +4,6 @@ set wildmode=list:full
 " colorscheme tolerable
 "colorscheme kate 
 " dark theme
-colorscheme vividchalk
 set number
 "set nolist
 set background=light
@@ -17,6 +16,7 @@ set tabstop=4       " The width of a TAB is set to 4.
 set shiftwidth=4    " Indents will have a width of 4
 set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
+
 
 set modeline
 set ls=2
@@ -34,13 +34,20 @@ set hidden
 set wrap " wrap long lines
 
 "au BufNewFile,BufRead *.tpl set filetype=ezp
-autocmd FileType text setlocal textwidth=78
-"let g:DisableAutoPHPFolding = 1
-set nofoldenable  				" don't auto fold code
+let g:DisableAutoPHPFolding = 0
+"set nofoldenable  				" don't auto fold code
+
+"folding and unfolding for php
+"map ,f :set foldmethod=indent<cr>zM<cr>
+"map ,F :set foldmethod=manual<cr>zR<cr>
+"From there you can unfold, or refold levels using z and whatever fold command you like. 
+
 let mapleader = '\'
 
 " file command completion mit tab
 set wildmenu
+
+set hlsearch
 
 
 let g:CommandTMaxFile = 200000
@@ -106,10 +113,10 @@ set lcs=nbsp:%
 
 " disable arrow keys to learn navigation
 
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
 
 "imap <up> <nop>
 "imap <down> <nop>
@@ -121,9 +128,22 @@ map <right> <nop>
 "nnoremap <C-P> :call PhpDocSingle()<CR> 
 "vnoremap <C-P> :call PhpDocRange()<CR>
 " imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
-inoremap <C-P> <ESC>:call PhpDoc()<CR>i 
-nnoremap <C-P> :call PhpDoc()<CR> 
-vnoremap <C-P> :call PhpDoc()<CR>
+"inoremap <C-P> <ESC>:call PhpDoc()<CR>i 
+"nnoremap <C-P> :call PhpDoc()<CR> 
+"vnoremap <C-P> :call PhpDoc()<CR>
+inoremap <C-P> <ESC>:call pdv#DocumentCurrentLine()<CR>i 
+nnoremap <C-P> :call pdv#DocumentWithSnip()<CR> 
+vnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
+"inoremap <buffer> <C-P> :call pdv#DocumentCurrentLine()<CR> 
+"nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at>"
+"phpdoc
+let g:pdv_cfg_Type = "mixed"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = "$id$"
+let g:pdv_cfg_Copyright = "2013 Styleflasher"
+let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
+let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
 "taglist
 " set the names of flags
@@ -141,3 +161,48 @@ let Tlist_Show_One_File = 1
 "youcompleteme
 
 let g:ycm_min_num_of_chars_for_completion = 100
+"colorscheme badwolf
+colorscheme harlequin 
+" this turns off physical line wrapping (ie: automatic insertion of newlines)
+autocmd FileType text setlocal textwidth=78
+autocmd FileType php setlocal textwidth=120
+"set textwidth=85
+"set formatoptions+=w
+"set wrapmargin=2
+
+" case sensitive search
+set noic
+
+" https://github.com/joonty/vim-phpqa
+" php qa
+"let g:phpqa_codesniffer_args = "--standard=PSR2"
+let g:phpqa_codesniffer_args = "--standard=ezcs"
+
+" To indent 'case:' and 'default:' statements in switch() blocks:
+let g:PHP_vintage_case_default_indent = 1
+
+
+
+
+
+"csslint
+"https://github.com/bolasblack/csslint.vim
+
+let g:CSSLint_FileTypeList = ['css', 'less', 'sess']
+
+"set phtml filetype
+au BufNewFile,BufRead *.phtml set filetype=phtml
+" autoindent files?
+set autoindent
+
+
+"xml.vim
+let xml_no_html = 1
+
+"vim gitgutter
+let g:gitgutter_enabled = 0
+
+"nerdtree
+map <C-n> :NERDTreeToggle<CR>
+"tlist
+map <C-t> :TListToggle<CR>
