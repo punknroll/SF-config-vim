@@ -31,6 +31,7 @@ Bundle 'eZVim'
 Bundle 'hallettj/jslint.vim.git'
 "Bundle 'kate.vim'
 Bundle 'https://github.com/drwX/php-manual.git'
+Bundle 'shawncplus/phpcomplete.vim'
 "Bundle 'PIV'
 "Bundle 'git://github.com/spf13/PIV.git'
 Bundle 'https://github.com/rstacruz/sparkup.git'
@@ -51,14 +52,15 @@ Bundle 'git://git.wincent.com/command-t.git'
 "Bundle 'https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle "https://github.com/tobyS/vmustache"
 Bundle "https://github.com/SirVer/ultisnips"
+" PHP Documentor for IVM
 Bundle 'tobyS/pdv'
-Bundle 'git://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
-Bundle "pangloss/vim-javascript"
+" Bundle 'git://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
+Bundle 'https://github.com/dilawar/vimlatex'
 " color themes
 Bundle "https://github.com/tpope/vim-vividchalk.git" 
 Bundle "https://github.com/sjl/badwolf.git"
 Bundle "https://github.com/nielsmadan/harlequin.git"
-Bundle "https://github.com/scrooloose/nerdtree.git"
+"Bundle "https://github.com/scrooloose/nerdtree.git"
 " ...
 " phpQA tools
 "Bundle 'joonty/vim-phpqa.git'
@@ -81,6 +83,29 @@ Bundle "https://github.com/AD7six/vim-independence"
 
 " phpfolding
 Bundle 'https://github.com/vim-scripts/phpfolding.vim'
+
+" vim-airline
+Bundle 'bling/vim-airline'
+
+" vim-airline-todo
+Bundle 'https://github.com/Zuckonit/vim-airline-todo'
+
+" javascirpt beautifier funzt nicht mit jslint
+" Bundle 'maksimr/vim-jsbeautify'
+
+" javascript tools
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
+"das hier funzt ned
+"Bundle 'https://github.com/jiangmiao/simple-javascript-indenter'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Raimondi/delimitMate'
+Bundle 'marijnh/tern_for_vim'
+
+" php-cs-fixer
+Bundle 'stephpy/vim-php-cs-fixer'
+
+Bundle 'docteurklein/php-getter-setter.vim'
 
 filetype plugin indent on     " required!
 

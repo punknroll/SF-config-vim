@@ -166,6 +166,7 @@ colorscheme harlequin
 " this turns off physical line wrapping (ie: automatic insertion of newlines)
 autocmd FileType text setlocal textwidth=78
 autocmd FileType php setlocal textwidth=120
+autocmd FileType php setlocal iskeyword-=58
 "set textwidth=85
 "set formatoptions+=w
 "set wrapmargin=2
@@ -190,6 +191,7 @@ let g:PHP_vintage_case_default_indent = 1
 
 let g:CSSLint_FileTypeList = ['css', 'less', 'sess']
 
+
 "set phtml filetype
 au BufNewFile,BufRead *.phtml set filetype=phtml
 " autoindent files?
@@ -206,3 +208,23 @@ let g:gitgutter_enabled = 0
 map <C-n> :NERDTreeToggle<CR>
 "tlist
 map <C-t> :TListToggle<CR>
+let NERDTreeHijackNetrw = 1
+
+"vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "sol"
+
+"vim-airline-todo
+let g:todo#recurse = 1
+
+"UltiSnipsusepython 2 sonsterror
+let g:UltiSnipsUsePythonVersion = 2
+
+"snytastic
+"let g:syntastic_less_use_less_lint = 1
+
+" open all files as unix files to see ^Ms
+set fileformat=unix
+set fileformats=unix
+
+map <LocalLeader>bg <Plug>PhpgetsetInsertBothGetterSetter
