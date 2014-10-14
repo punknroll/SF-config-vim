@@ -1,3 +1,3 @@
-# My vim configuration formerly inspired by spf13-vim
+# My vim configuration
 
-it mainly uses vundle to configure all the stuff.
+I use the .vimrc from http://vim-bootstrap.com and add my custom bundles in .vimrc.local.bundles. My custom modifications are in .vimrc.local.
