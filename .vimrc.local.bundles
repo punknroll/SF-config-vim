@@ -1,0 +1,23 @@
+
+NeoBundle "https://github.com/vim-scripts/eZVim"
+NeoBundle "https://github.com/systemmonkey42/vim-independence"
+NeoBundle "https://github.com/stephpy/vim-phpdoc.git"
+" PHP Documentor for IVM
+NeoBundle 'tobyS/pdv'
+NeoBundle 'shawncplus/phpcomplete.vim'
+NeoBundle 'https://github.com/vim-scripts/tagbar-phpctags.git'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+
+NeoBundle 'docteurklein/php-getter-setter.vim'
+
+NeoBundle "https://github.com/tobyS/vmustache"
+NeoBundle "https://github.com/SirVer/ultisnips"
+"light colorscheme
+NeoBundle "tolerable.vim"
+NeoBundle "https://github.com/dilawar/vimlatex"
+NeoBundle "https://github.com/othree/xml.vim"
+NeoBundle "https://github.com/evidens/vim-twig"
+NeoBundle "https://github.com/groenewege/vim-less"
+
+NeoBundle "flazz/vim-colorschemes"
+NeoBundle "vim-scripts/C64.vim"
