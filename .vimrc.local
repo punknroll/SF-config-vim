@@ -1,6 +1,12 @@
 " MyConf
 
 let g:snips_author = "Andreas Adelsberger"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 set gfn=Monospace\ 9
 
@@ -15,6 +21,9 @@ set shiftwidth=4    " Indents will have a width of 4
 set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 set lcs=nbsp:%
+
+" to enable .vimrc per project
+set exrc
 
 set history=1000 " Store a ton of history (default is 20)
 if has('persistent_undo')
@@ -53,8 +62,11 @@ let g:syntastic_aggregate_errors = 1
 
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
+au BufRead,BufNewFile *.ini.append.php set filetype=ezpini
+au BufRead,BufNewFile *.ts set filetype=xml
 autocmd FileType php setlocal iskeyword-=58
 autocmd FileType ezp set textwidth=0
+autocmd FileType xml set textwidth=0
 
 set mouse=a " automatically enable mouse usage
 set mousemodel=extend
@@ -68,3 +80,20 @@ set guioptions&
 set guioptions-=T
 set guioptions-=e
 
+if has('gui_running')
+  set grepprg=grep\ -nH\ $*
+  filetype indent on
+  let g:tex_flavor='latex'
+endif
+au BufEnter *.tex set autowrite
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats = 'pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+let g:Tex_GotoError = 0
+let g:Tex_ViewRule_pdf = 'evince'
+
+"UltiSnips for angularjs
+let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
+
+"If you enable this, it’s also a good idea to add this to the end of your ~/.vimrc to disable unsafe commands in your project-specific .vimrc files:
+set secure

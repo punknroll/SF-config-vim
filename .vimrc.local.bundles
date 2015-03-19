@@ -1,6 +1,6 @@
 
 NeoBundle "https://github.com/vim-scripts/eZVim"
-NeoBundle "https://github.com/systemmonkey42/vim-independence"
+"NeoBundle "https://github.com/systemmonkey42/vim-independence"
 NeoBundle "https://github.com/stephpy/vim-phpdoc.git"
 " PHP Documentor for IVM
 NeoBundle 'tobyS/pdv'
@@ -14,10 +14,15 @@ NeoBundle "https://github.com/tobyS/vmustache"
 NeoBundle "https://github.com/SirVer/ultisnips"
 "light colorscheme
 NeoBundle "tolerable.vim"
-NeoBundle "https://github.com/dilawar/vimlatex"
+"NeoBundle "lervag/vim-latex"
 NeoBundle "https://github.com/othree/xml.vim"
 NeoBundle "https://github.com/evidens/vim-twig"
 NeoBundle "https://github.com/groenewege/vim-less"
 
 NeoBundle "flazz/vim-colorschemes"
 NeoBundle "vim-scripts/C64.vim"
+" php documentation inside vim
+NeoBundle "https://github.com/mudpile45/vim-phpdoc"
+NeoBundle "https://github.com/pangloss/vim-javascript"
+" snippets for angularjs
+NeoBundle "https://github.com/matthewsimo/angular-vim-snippets"
