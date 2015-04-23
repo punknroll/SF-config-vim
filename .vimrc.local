@@ -51,7 +51,7 @@ let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2014 Styleflasher"
+let g:pdv_cfg_Copyright = "2015 Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
@@ -96,4 +96,12 @@ let g:Tex_ViewRule_pdf = 'evince'
 let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
 
 "If you enable this, it’s also a good idea to add this to the end of your ~/.vimrc to disable unsafe commands in your project-specific .vimrc files:
-set secure
+"set secure
+"
+let g:editorconfig_Beautifier = '/home/punknroll/projects/cadastre/.editorconfig'
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+
+"set guifont=Monospace\ 8
+"disabled hiding of " in json files
+"let g:webdevicons_conceal_nerdtree_brackets=0
+
