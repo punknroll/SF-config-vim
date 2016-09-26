@@ -1,0 +1,14 @@
+snippet ngSFs "angular module with service"
+/**
+* @ngdoc service
+* @name ${1:name}
+* @description
+*  $0
+*/
+(function () {
+    'use strict';
+    angular.module('${1:moduleName}', ['${2:dependency}'])
+        .service('{${3:serviceName}', function () {
+    });
+}());
+endsnippet

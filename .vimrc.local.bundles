@@ -27,6 +27,27 @@ NeoBundle "https://github.com/pangloss/vim-javascript"
 NeoBundle "maksimr/vim-jsbeautify"
 " snippets for angularjs
 NeoBundle "https://github.com/matthewsimo/angular-vim-snippets"
-"NeoBundle 'bkbncn/vim-colorschemes-picker'
 NeoBundle "https://github.com/AD7six/vim-independence"
 NeoBundle 'ryanoasis/vim-webdevicons'
+"close buffer without closing window
+NeoBundle 'https://github.com/vim-scripts/bufkill.vim'
+"colorscheme
+NeoBundle 'https://github.com/google/vim-colorscheme-primary'
+NeoBundle 'https://github.com/xolox/vim-colorscheme-switcher'
+NeoBundle 'Taverius/vim-colorscheme-manager', {
+                    \   'depends' : [
+                    \       'xolox/vim-misc',
+                    \       'xolox/vim-colorscheme-switcher'
+                    \ ]}
+NeoBundle 'https://github.com/diepm/vim-rest-console'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+NeoBundle 'https://github.com/vim-scripts/dbext.vim'
+NeoBundle 'https://github.com/ternjs/tern_for_vim.git'
+NeoBundle 'mhinz/vim-startify'
+NeoBundle 'chrisbra/csv.vim'
+"refactoring for php
+NeoBundle 'adoy/vim-php-refactoring-toolbox'
+NeoBundle 'editorconfig/editorconfig-vim'
+
+NeoBundle 'mtscout6/syntastic-local-eslint.vim'
+NeoBundle 'vim-airline/vim-airline-themes'

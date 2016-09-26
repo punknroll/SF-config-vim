@@ -8,7 +8,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-set gfn=Monospace\ 9
+"set gfn=Monospace\ 9
+set gfn=Hack\ 9
 
 set list            " show hidden characters
 set listchars=nbsp:~    "show strange nbsp chars from text copied out of the web
@@ -51,7 +52,7 @@ let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2015 Styleflasher"
+let g:pdv_cfg_Copyright = "2016 Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
@@ -59,6 +60,9 @@ let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_javascript_checkers = ['eslint']
 
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
@@ -103,5 +107,16 @@ autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 "set guifont=Monospace\ 8
 "disabled hiding of " in json files
-"let g:webdevicons_conceal_nerdtree_brackets=0
+let g:webdevicons_conceal_nerdtree_brackets=0
+
+set nobackup
+set nowritebackup
+set noswapfile
+"no need for "+ anymore
+set clipboard=unnamed
+
+
+let g:netrw_liststyle=3
+let g:netrw_altv = 1
+
 
