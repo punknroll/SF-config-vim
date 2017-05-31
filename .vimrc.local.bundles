@@ -1,53 +1,49 @@
-
-NeoBundle "https://github.com/vim-scripts/eZVim"
-"NeoBundle "https://github.com/systemmonkey42/vim-independence"
-NeoBundle "https://github.com/stephpy/vim-phpdoc.git"
-" PHP Documentor for IVM
-NeoBundle 'tobyS/pdv'
-NeoBundle 'shawncplus/phpcomplete.vim'
-NeoBundle 'https://github.com/vim-scripts/tagbar-phpctags.git'
-NeoBundle 'stephpy/vim-php-cs-fixer'
-
-NeoBundle 'docteurklein/php-getter-setter.vim'
-
-NeoBundle "https://github.com/tobyS/vmustache"
-NeoBundle "https://github.com/SirVer/ultisnips"
+Plug 'https://github.com/stephpy/vim-phpdoc.git'
+Plug 'tobyS/pdv'
+Plug 'https://github.com/vim-scripts/tagbar-phpctags.git'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'docteurklein/php-getter-setter.vim'
+Plug 'https://github.com/tobyS/vmustache'
 "light colorscheme
-NeoBundle "tolerable.vim"
-NeoBundle "lervag/vim-latex"
-NeoBundle "https://github.com/othree/xml.vim"
-NeoBundle "https://github.com/evidens/vim-twig"
-NeoBundle "https://github.com/groenewege/vim-less"
-
-NeoBundle "flazz/vim-colorschemes"
-NeoBundle "vim-scripts/C64.vim"
+Plug 'tolerable.vim'
+Plug 'lervag/vimtex'
+Plug 'https://github.com/othree/xml.vim'
+Plug 'https://github.com/evidens/vim-twig'
+Plug 'https://github.com/groenewege/vim-less'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-scripts/C64.vim'
 " php documentation inside vim
-NeoBundle "https://github.com/mudpile45/vim-phpdoc"
-NeoBundle "https://github.com/pangloss/vim-javascript"
-NeoBundle "maksimr/vim-jsbeautify"
+Plug 'https://github.com/mudpile45/vim-phpdoc'
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'maksimr/vim-jsbeautify'
 " snippets for angularjs
-NeoBundle "https://github.com/matthewsimo/angular-vim-snippets"
-NeoBundle "https://github.com/AD7six/vim-independence"
-NeoBundle 'ryanoasis/vim-webdevicons'
+Plug 'https://github.com/matthewsimo/angular-vim-snippets'
+Plug 'https://github.com/AD7six/vim-independence'
+Plug 'ryanoasis/vim-webdevicons'
 "close buffer without closing window
-NeoBundle 'https://github.com/vim-scripts/bufkill.vim'
+Plug 'https://github.com/vim-scripts/bufkill.vim'
 "colorscheme
-NeoBundle 'https://github.com/google/vim-colorscheme-primary'
-NeoBundle 'https://github.com/xolox/vim-colorscheme-switcher'
-NeoBundle 'Taverius/vim-colorscheme-manager', {
+Plug 'https://github.com/google/vim-colorscheme-primary'
+Plug 'https://github.com/xolox/vim-colorscheme-switcher'
+Plug 'Taverius/vim-colorscheme-manager', {
                     \   'depends' : [
                     \       'xolox/vim-misc',
                     \       'xolox/vim-colorscheme-switcher'
                     \ ]}
-NeoBundle 'https://github.com/diepm/vim-rest-console'
-NeoBundle 'stephpy/vim-php-cs-fixer'
-NeoBundle 'https://github.com/vim-scripts/dbext.vim'
-NeoBundle 'https://github.com/ternjs/tern_for_vim.git'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'chrisbra/csv.vim'
+Plug 'https://github.com/diepm/vim-rest-console'
+Plug 'guenti/vim-php-cs-fixer'
+Plug 'https://github.com/vim-scripts/dbext.vim'
+Plug 'https://github.com/ternjs/tern_for_vim.git'
+Plug 'mhinz/vim-startify'
+Plug 'chrisbra/csv.vim'
 "refactoring for php
-NeoBundle 'adoy/vim-php-refactoring-toolbox'
-NeoBundle 'editorconfig/editorconfig-vim'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'gcorne/vim-sass-lint'
 
-NeoBundle 'mtscout6/syntastic-local-eslint.vim'
-NeoBundle 'vim-airline/vim-airline-themes'
+"padawan php completion
+"Plug 'mkusher/padawan.vim'
+"testing autocompletion
+Plug 'shawncplus/phpcomplete.vim'

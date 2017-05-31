@@ -63,6 +63,8 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_html_checkers = ['tidy']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_sass_checkers=["sasslint"]
+let g:syntastic_scss_checkers=["sasslint"]
 
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
@@ -72,29 +74,35 @@ autocmd FileType php setlocal iskeyword-=58
 autocmd FileType ezp set textwidth=0
 autocmd FileType xml set textwidth=0
 
-set mouse=a " automatically enable mouse usage
-set mousemodel=extend
+"phpcomplete-extended
+"autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+"set mouse=a " automatically enable mouse usage
+"set mousemodel=extend
 set history=1000
 " open all files as unix files to see ^Ms
 set fileformat=unix
 set fileformats=unix
 
 "reset strang guioptions from .vimrc
-set guioptions&
-set guioptions-=T
-set guioptions-=e
+"set guioptions&
+"set guioptions-=T
+"set guioptions-=e
 
 if has('gui_running')
   set grepprg=grep\ -nH\ $*
   filetype indent on
-  let g:tex_flavor='latex'
+  "let g:tex_flavor='latex'
 endif
-au BufEnter *.tex set autowrite
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-let g:Tex_GotoError = 0
-let g:Tex_ViewRule_pdf = 'evince'
+"au BufEnter *.tex set autowrite
+"let g:Tex_DefaultTargetFormat = 'pdf'
+"let g:Tex_MultipleCompileFormats = 'pdf'
+"let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+"let g:Tex_GotoError = 0
+"let g:Tex_ViewRule_pdf = 'evince'
+
+"let g:Tex_UsePython=0
 
 "UltiSnips for angularjs
 let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
@@ -113,10 +121,22 @@ set nobackup
 set nowritebackup
 set noswapfile
 "no need for "+ anymore
-set clipboard=unnamed
+" set clipboard=unnamed
 
 
 let g:netrw_liststyle=3
 let g:netrw_altv = 1
 
+au FileType * execute 'setlocal dict+=~/vim-phpqa-dict/dictionary/'.&filetype.'.txt'
 
+let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
+"let g:padawan#composer_command = "php /path/to/composer.phar"
+let g:padawan#composer_command = "composer"
+
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
