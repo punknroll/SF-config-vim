@@ -1,10 +1,10 @@
 /**
- * Class: ${1:{{name}}}.
+ * Class: ${1:{{name}}}
  *
- * @category     
- * @package      
+ * @category
+ * @package
  * @author   Andreas Adelsberger <andreas.adelsberger@styleflasher.at>
- * @license  copyright 2013 Styleflasher New Media 
+ * @license  copyright 2017 Styleflasher GmbH
  * @link     http://www.styleflasher.at
  *{{#interfaces}}
  * @see      {{name}}{{/interfaces}}{{#parent}}
