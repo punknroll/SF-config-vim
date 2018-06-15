@@ -31,6 +31,8 @@ if has('persistent_undo')
     "set undofile "so is persistent undo ...
     set undolevels=1000 "maximum number of changes that can be undone
     set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+    set undodir=/home/punknroll/.vim/undodir
+    set undofile
 endif
 
 
@@ -52,7 +54,7 @@ let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2016 Styleflasher"
+let g:pdv_cfg_Copyright = "2018 Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
@@ -65,6 +67,7 @@ let g:syntastic_html_checkers = ['tidy']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["sasslint"]
+let g:syntastic_twig_checkers=["twig-lint"]
 
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
@@ -140,3 +143,19 @@ function! IPhpInsertUse()
 endfunction
 autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+" markdown preview plugin
+let vim_markdown_preview_hotkey='<C-m>'
+
+"speed up nerdtree?
+" https://unix.stackexchange.com/questions/49414/tmux-output-is-slower-when-vertical-splits-exist-why
+set lazyredraw
+set ttyfast
+
+" xdebug with vdebug
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+let g:vdebug_options.port = 9009
+let g:vdebug_options.ide_key = 'LOCALDEV'
+let g:vdebug_options.path_maps = {'/var/www' : '/mnt/data/projects' }

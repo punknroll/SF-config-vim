@@ -5,7 +5,7 @@ Plug 'stephpy/vim-php-cs-fixer'
 Plug 'docteurklein/php-getter-setter.vim'
 Plug 'https://github.com/tobyS/vmustache'
 "light colorscheme
-Plug 'tolerable.vim'
+"Plug 'tolerable.vim'
 Plug 'lervag/vimtex'
 Plug 'https://github.com/othree/xml.vim'
 Plug 'https://github.com/evidens/vim-twig'
@@ -14,7 +14,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/C64.vim'
 " php documentation inside vim
 Plug 'https://github.com/mudpile45/vim-phpdoc'
-Plug 'https://github.com/pangloss/vim-javascript'
+" Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'maksimr/vim-jsbeautify'
 " snippets for angularjs
 Plug 'https://github.com/matthewsimo/angular-vim-snippets'
@@ -33,17 +33,22 @@ Plug 'Taverius/vim-colorscheme-manager', {
 Plug 'https://github.com/diepm/vim-rest-console'
 Plug 'guenti/vim-php-cs-fixer'
 Plug 'https://github.com/vim-scripts/dbext.vim'
-Plug 'https://github.com/ternjs/tern_for_vim.git'
+" Plug 'https://github.com/ternjs/tern_for_vim.git'
 Plug 'mhinz/vim-startify'
 Plug 'chrisbra/csv.vim'
 "refactoring for php
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mtscout6/syntastic-local-eslint.vim'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'gcorne/vim-sass-lint'
 
 "padawan php completion
 "Plug 'mkusher/padawan.vim'
 "testing autocompletion
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'JamshedVesuna/vim-markdown-preview'
+" file explorer
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/unite.vim'
+Plug 'joonty/vdebug'
+Plug 'sywod/vim-keepeye'
