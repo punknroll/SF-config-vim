@@ -54,7 +54,7 @@ let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2018 Styleflasher"
+let g:pdv_cfg_Copyright = "2019 Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
@@ -62,12 +62,15 @@ let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_filetype_map = { 'html.twig': 'twig' }
+"let g:syntastic_twig_twiglint_exec = 'twig-lint'
+"let g:syntastic_twig_twiglint_exe = 'php /path/to/twig-lint.phar'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["sasslint"]
-let g:syntastic_twig_checkers=["twig-lint"]
+let g:syntastic_html_twig_checkers=["twiglint"]
+let g:syntastic_twig_checkers=["twiglint"]
+let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd', 'phpstan']
 
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
@@ -76,10 +79,6 @@ au BufRead,BufNewFile *.ts set filetype=xml
 autocmd FileType php setlocal iskeyword-=58
 autocmd FileType ezp set textwidth=0
 autocmd FileType xml set textwidth=0
-
-"phpcomplete-extended
-"autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 "set mouse=a " automatically enable mouse usage
 "set mousemodel=extend
@@ -113,7 +112,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/U
 "If you enable this, it’s also a good idea to add this to the end of your ~/.vimrc to disable unsafe commands in your project-specific .vimrc files:
 "set secure
 "
-let g:editorconfig_Beautifier = '/home/punknroll/projects/cadastre/.editorconfig'
+let g:editorconfig_Beautifier = '/mnt/data/projects/cadastre/.editorconfig'
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 "set guifont=Monospace\ 8
@@ -134,7 +133,7 @@ au FileType * execute 'setlocal dict+=~/vim-phpqa-dict/dictionary/'.&filetype.'.
 
 let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
 "let g:padawan#composer_command = "php /path/to/composer.phar"
-let g:padawan#composer_command = "composer"
+"let g:padawan#composer_command = "composer"
 
 
 function! IPhpInsertUse()
@@ -159,3 +158,79 @@ endif
 let g:vdebug_options.port = 9009
 let g:vdebug_options.ide_key = 'LOCALDEV'
 let g:vdebug_options.path_maps = {'/var/www' : '/mnt/data/projects' }
+
+
+" https://engagor.github.io/blog/2017/02/15/vim-ide-exploring-code/
+" Ack -> Ag
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+" PHP Find Implementations
+function! PhpImplementations(word)
+    exe 'Ack "implements.*' . a:word . ' *($|{)"'
+endfunction
+
+" PHP Find Subclasses
+function! PhpSubclasses(word)
+    exe 'Ack "extends.*' . a:word . ' *($|{)"'
+endfunction
+
+noremap <Leader>fi :call PhpImplementations('<cword>')<CR>
+noremap <Leader>fe :call PhpSubclasses('<cword>')<CR>
+" PHP Find Usage
+function! PhpUsage(word)
+    exe 'Ack "::' . a:word . '\(|>' . a:word . '\("'
+endfunction
+
+noremap <Leader>fu :call PhpUsage('<cword>')<CR>
+
+"gutetags
+" Where to store tag files
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+
+let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md',
+                            \ '*vendor/*/test*', '*vendor/*/Test*',
+                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+                            \ '*var/cache*', '*var/log*', '*node_modules*','*web*', '*ezpublish*']
+
+
+
+" new php autocompletion
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
+
+" php actor mappings
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+
+" Goto definition of class or class member under the cursor
+nmap <Leader>o :call phpactor#GotoDefinition()<CR>
+
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
+
+" Transform the classes in the current file
+nmap <Leader>tt :call phpactor#Transform()<CR>
+
+" Generate a new class (replacing the current file)
+nmap <Leader>cc :call phpactor#ClassNew()<CR>
+
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+
+" Extract method from selection
+vmap <silent><Leader>es :<C-U>call phpactor#ExtractMethod()<CR>
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+let g:phpactorOmniError = v:true
+
+let g:syntastic_php_phpstan_args = "-l 5 -c phpstan.neon"

@@ -4,7 +4,7 @@
  * @category
  * @package
  * @author   Andreas Adelsberger <andreas.adelsberger@styleflasher.at>
- * @license  copyright 2017 Styleflasher GmbH
+ * @license  copyright 2018 Styleflasher GmbH
  * @link     http://www.styleflasher.at
  *{{#interfaces}}
  * @see      {{name}}{{/interfaces}}{{#parent}}

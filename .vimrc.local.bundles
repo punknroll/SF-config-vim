@@ -2,7 +2,8 @@ Plug 'https://github.com/stephpy/vim-phpdoc.git'
 Plug 'tobyS/pdv'
 Plug 'https://github.com/vim-scripts/tagbar-phpctags.git'
 Plug 'stephpy/vim-php-cs-fixer'
-Plug 'docteurklein/php-getter-setter.vim'
+" removed because of vim-php-refactoring-toolbaox, cause wrong comments
+"Plug 'docteurklein/php-getter-setter.vim'
 Plug 'https://github.com/tobyS/vmustache'
 "light colorscheme
 "Plug 'tolerable.vim'
@@ -37,18 +38,22 @@ Plug 'https://github.com/vim-scripts/dbext.vim'
 Plug 'mhinz/vim-startify'
 Plug 'chrisbra/csv.vim'
 "refactoring for php
+Plug 'docteurklein/php-getter-setter.vim'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'gcorne/vim-sass-lint'
-
-"padawan php completion
-"Plug 'mkusher/padawan.vim'
-"testing autocompletion
-Plug 'shawncplus/phpcomplete.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 " file explorer
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/unite.vim'
 Plug 'joonty/vdebug'
-Plug 'sywod/vim-keepeye'
+Plug 'soywod/vim-keepeye'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'dracula/vim'
+
+" new php code completion
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+
