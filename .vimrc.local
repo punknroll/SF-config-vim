@@ -72,6 +72,12 @@ let g:syntastic_html_twig_checkers=["twiglint"]
 let g:syntastic_twig_checkers=["twiglint"]
 let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd', 'phpstan']
 
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan'],
+\}
+
+
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
 au BufRead,BufNewFile *.ini.append.php set filetype=ezpini
@@ -125,6 +131,8 @@ set noswapfile
 "no need for "+ anymore
 " set clipboard=unnamed
 
+" this allowes to paste the same from the register multiple times
+xnoremap p pgvy
 
 let g:netrw_liststyle=3
 let g:netrw_altv = 1
@@ -234,3 +242,16 @@ autocmd FileType php setlocal omnifunc=phpactor#Complete
 let g:phpactorOmniError = v:true
 
 let g:syntastic_php_phpstan_args = "-l 5 -c phpstan.neon"
+
+" use this as you use autoindention
+let g:phpgetset_setterTemplate =
+\ "    \n" .
+\ "    /**\n" .
+\ "     * Set %varname%.\n" .
+\ "     *\n" .
+\ "     * @param %vartype% $%varname%\n" .
+\ "     */\n" .
+\ "    public function %funcname%($%varname%)\n" .
+\ "    {\n" .
+\ "        $this->%varname% = $%varname%;\n" .
+\ "    }"

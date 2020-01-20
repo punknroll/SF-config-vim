@@ -38,7 +38,9 @@ Plug 'https://github.com/vim-scripts/dbext.vim'
 Plug 'mhinz/vim-startify'
 Plug 'chrisbra/csv.vim'
 "refactoring for php
-Plug 'docteurklein/php-getter-setter.vim'
+Plug 'punknroll/php-getter-setter.vim'
+" use the fork above as typehinting is implemented in the pull request
+" Plug 'docteurklein/php-getter-setter.vim'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mtscout6/syntastic-local-eslint.vim'
@@ -56,4 +58,8 @@ Plug 'dracula/vim'
 
 " new php code completion
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+
+"vue
+" Plug 'storyn26383/vim-vue'
+Plug 'posva/vim-vue'
 
