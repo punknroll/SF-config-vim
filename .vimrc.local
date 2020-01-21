@@ -37,41 +37,19 @@ endif
 
 
 "https://github.com/stephpy/vim-phpdoc/blob/master/plugin/phpdoc.vim
-"inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
-"nnoremap <C-P> :call PhpDocSingle()<CR>
-"vnoremap <C-P> :call PhpDocRange()<CR>
-" imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
-"inoremap <C-P> <ESC>:call PhpDoc()<CR>i
-"nnoremap <C-P> :call PhpDoc()<CR>
-"vnoremap <C-P> :call PhpDoc()<CR>
 inoremap <C-P> <ESC>:call pdv#DocumentCurrentLine()<CR>i
 nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
 vnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
-"inoremap <buffer> <C-P> :call pdv#DocumentCurrentLine()<CR>
-"nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at>"
 "phpdoc
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2019 Styleflasher"
+let g:pdv_cfg_Copyright = "2020 Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
-" don't open the errors on old projects
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_filetype_map = { 'html.twig': 'twig' }
-"let g:syntastic_twig_twiglint_exec = 'twig-lint'
-"let g:syntastic_twig_twiglint_exe = 'php /path/to/twig-lint.phar'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_sass_checkers=["sasslint"]
-let g:syntastic_scss_checkers=["sasslint"]
-let g:syntastic_html_twig_checkers=["twiglint"]
-let g:syntastic_twig_checkers=["twiglint"]
-let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd', 'phpstan']
-
+" ale is the new linter
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan'],
@@ -81,6 +59,30 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+let g:ale_php_phpcs_standard = 'PSR2'
+let g:ale_php_phpcs_options = ' --extensions=php --report=csv'
+let g:ale_php_phpcs_executable = 'vendor/squizlabs/php_codesniffer/scripts/phpcs'
+let g:ale_php_phpmd_executable = 'vendor/phpmd/phpmd/src/bin/phpmd'
+let g:ale_php_phpmd_ruleset= 'phpmd-rule.xml'
+let g:ale_php_langserver_use_global = 1
+let g:ale_php_langserver_executable = '/home/punknroll/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php'
+
+let g:editorconfig_Beautifier = '.editorconfig'
+let g:ale_html_tidy_ignore_errors = [ 'proprietary attribute',"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected" ]
+let g:ale_html_tidy_exec = 'tidy5'
+let g:ale_javascript_checkers = ['eslint']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'vue': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+let g:ale_keep_list_window_open = 0
+
 "php autocomplete fix find tag in static function calls
 au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
 au BufRead,BufNewFile *.ini.append.php set filetype=ezpini
@@ -89,31 +91,15 @@ autocmd FileType php setlocal iskeyword-=58
 autocmd FileType ezp set textwidth=0
 autocmd FileType xml set textwidth=0
 
-"set mouse=a " automatically enable mouse usage
-"set mousemodel=extend
 set history=1000
 " open all files as unix files to see ^Ms
 set fileformat=unix
 set fileformats=unix
 
-"reset strang guioptions from .vimrc
-"set guioptions&
-"set guioptions-=T
-"set guioptions-=e
-
 if has('gui_running')
   set grepprg=grep\ -nH\ $*
   filetype indent on
-  "let g:tex_flavor='latex'
 endif
-"au BufEnter *.tex set autowrite
-"let g:Tex_DefaultTargetFormat = 'pdf'
-"let g:Tex_MultipleCompileFormats = 'pdf'
-"let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-"let g:Tex_GotoError = 0
-"let g:Tex_ViewRule_pdf = 'evince'
-
-"let g:Tex_UsePython=0
 
 "UltiSnips for angularjs
 let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
@@ -124,15 +110,11 @@ let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/U
 let g:editorconfig_Beautifier = '/mnt/data/projects/cadastre/.editorconfig'
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
-"set guifont=Monospace\ 8
-"disabled hiding of " in json files
 let g:webdevicons_conceal_nerdtree_brackets=0
 
 set nobackup
 set nowritebackup
 set noswapfile
-"no need for "+ anymore
-" set clipboard=unnamed
 
 " this allowes to paste the same from the register multiple times
 xnoremap p pgvy
@@ -143,9 +125,6 @@ let g:netrw_altv = 1
 au FileType * execute 'setlocal dict+=~/vim-phpqa-dict/dictionary/'.&filetype.'.txt'
 
 let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
-"let g:padawan#composer_command = "php /path/to/composer.phar"
-"let g:padawan#composer_command = "composer"
-
 
 function! IPhpInsertUse()
     call PhpInsertUse()
@@ -245,8 +224,6 @@ let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
 "autocmd FileType php setlocal omnifunc=phpactor#Complete
 "let g:phpactorOmniError = v:true
 
-let g:syntastic_php_phpstan_args = "-l 5 -c phpstan.neon"
-
 " use this as you use autoindention
 let g:phpgetset_setterTemplate =
 \ "    \n" .
@@ -259,5 +236,3 @@ let g:phpgetset_setterTemplate =
 \ "    {\n" .
 \ "        $this->%varname% = $%varname%;\n" .
 \ "    }"
-
-
