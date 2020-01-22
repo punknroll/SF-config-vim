@@ -66,6 +66,7 @@ let g:ale_php_phpmd_executable = 'vendor/phpmd/phpmd/src/bin/phpmd'
 let g:ale_php_phpmd_ruleset= 'phpmd-rule.xml'
 let g:ale_php_langserver_use_global = 1
 let g:ale_php_langserver_executable = '/home/punknroll/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php'
+let g:ale_php_phpstan_level = 5
 
 let g:editorconfig_Beautifier = '.editorconfig'
 let g:ale_html_tidy_ignore_errors = [ 'proprietary attribute',"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected" ]
