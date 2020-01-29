@@ -57,9 +57,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim'
 
 " new php code completion
-" Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 
 "vue
 " Plug 'storyn26383/vim-vue'
 Plug 'posva/vim-vue'
-
+Plug 'rodrigoq/ale-twig-lint'
