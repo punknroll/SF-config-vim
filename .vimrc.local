@@ -1,51 +1,35 @@
-" MyConf
-
+" UltiSnips
 let g:snips_author = "Andreas Adelsberger"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-"set gfn=Monospace\ 9
-set gfn=Hack\ 9
+"UltiSnips for angularjs
+let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
 
 set list            " show hidden characters
 set listchars=nbsp:~    "show strange nbsp chars from text copied out of the web
-set tabstop=4       " The width of a TAB is set to 4.
-" Still it is a \t. It is just that
-" Vim will interpret it to be having
-" a width of 4.
-
-set shiftwidth=4    " Indents will have a width of 4
-set softtabstop=4   " Sets the number of columns for a TAB
-set expandtab       " Expand TABs to spaces
 set lcs=nbsp:%
 
 " to enable .vimrc per project
 set exrc
 
-set history=1000 " Store a ton of history (default is 20)
-if has('persistent_undo')
-    "set undofile "so is persistent undo ...
-    set undolevels=1000 "maximum number of changes that can be undone
-    set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-    set undodir=/home/punknroll/.vim/undodir
-    set undofile
-endif
+" set font one smaller
+set gfn=Hack\ 9
 
+set history=1000
 
+" phpdoc
 "https://github.com/stephpy/vim-phpdoc/blob/master/plugin/phpdoc.vim
 inoremap <C-P> <ESC>:call pdv#DocumentCurrentLine()<CR>i
 nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
 vnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
 let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at>"
-"phpdoc
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Copyright = "2020 Styleflasher"
+let g:pdv_cfg_Copyright = strftime("%Y%")." Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
 let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
 
@@ -57,6 +41,7 @@ let g:ale_linters = {
 \}
 "let g:ale_linters_explicit = 1
 set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -71,20 +56,24 @@ let g:ale_php_langserver_executable = '/home/punknroll/.composer/vendor/felixfbe
 let g:ale_php_phpstan_level = 5
 let g:ale_twig_twiglint_executable = '/home/punknroll/.composer/vendor/bin/twig-lint'
 
-let g:editorconfig_Beautifier = '.editorconfig'
-"let g:ale_html_tidy_ignore_errors = [ 'proprietary attribute',"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected" ]
-"let g:ale_html_tidy_exec = 'tidy5'
 let g:ale_javascript_checkers = ['eslint']
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'vue': ['prettier', 'eslint'],
 \   'php': ['php_cs_fixer'],
+\   'html.twig': ['twiglint'],
 \}
 let g:ale_php_cs_fixer_options='--rules=@Symfony'
 let g:ale_php_cs_fixer_executable='/home/punknroll/.composer/vendor/bin/php-cs-fixer'
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
+"let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
@@ -98,36 +87,13 @@ autocmd FileType php setlocal iskeyword-=58
 autocmd FileType ezp set textwidth=0
 autocmd FileType xml set textwidth=0
 
-set history=1000
-" open all files as unix files to see ^Ms
-set fileformat=unix
-set fileformats=unix
-
-if has('gui_running')
-  set grepprg=grep\ -nH\ $*
-  filetype indent on
-endif
-
-"UltiSnips for angularjs
-let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
-
-"If you enable this, it’s also a good idea to add this to the end of your ~/.vimrc to disable unsafe commands in your project-specific .vimrc files:
-"set secure
-"
+".editorconfig"
+let g:editorconfig_Beautifier = '.editorconfig'
 let g:editorconfig_Beautifier = '/mnt/data/projects/cadastre/.editorconfig'
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
-let g:webdevicons_conceal_nerdtree_brackets=0
-
-set nobackup
-set nowritebackup
-set noswapfile
-
 " this allowes to paste the same from the register multiple times
-xnoremap p pgvy
-
-let g:netrw_liststyle=3
-let g:netrw_altv = 1
+" xnoremap p pgvy
 
 au FileType * execute 'setlocal dict+=~/vim-phpqa-dict/dictionary/'.&filetype.'.txt'
 
@@ -143,11 +109,6 @@ autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 " markdown preview plugin
 let vim_markdown_preview_hotkey='<C-m>'
 
-"speed up nerdtree?
-" https://unix.stackexchange.com/questions/49414/tmux-output-is-slower-when-vertical-splits-exist-why
-set lazyredraw
-set ttyfast
-
 " xdebug with vdebug
 if !exists('g:vdebug_options')
     let g:vdebug_options = {}
@@ -156,12 +117,6 @@ let g:vdebug_options.port = 9009
 let g:vdebug_options.ide_key = 'LOCALDEV'
 let g:vdebug_options.path_maps = {'/var/www' : '/mnt/data/projects' }
 
-
-" https://engagor.github.io/blog/2017/02/15/vim-ide-exploring-code/
-" Ack -> Ag
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 " PHP Find Implementations
 function! PhpImplementations(word)
     exe 'Ack "implements.*' . a:word . ' *($|{)"'
@@ -181,23 +136,10 @@ endfunction
 
 noremap <Leader>fu :call PhpUsage('<cword>')<CR>
 
-"gutetags
-" Where to store tag files
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-
-let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
-                            \ '*.phar', '*.ini', '*.rst', '*.md',
-                            \ '*vendor/*/test*', '*vendor/*/Test*',
-                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
-                            \ '*var/cache*', '*var/log*', '*node_modules*','*web*', '*ezpublish*']
-
-
-
-" new php autocompletion
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" set completeopt=noinsert,menuone,noselect
-
 " php actor mappings
+" PHP actor is by far the most advanced tool for php. Autocompletion and
+" Navigation works way better as phplanguageserver as local var comments
+" aren't supported. Use the mappings below for php.
 " Include use statement
 nmap <Leader>u :call phpactor#UseAdd()<CR>
 
@@ -228,18 +170,19 @@ vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
 " Extract method from selection
 vmap <silent><Leader>es :<C-U>call phpactor#ExtractMethod()<CR>
 
-"autocmd FileType php setlocal omnifunc=phpactor#Complete
-"let g:phpactorOmniError = v:true
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+let g:phpactorOmniError = v:true
+let g:phpactorOmniAutoClassImport = v:true
 
 " use this as you use autoindention
 let g:phpgetset_setterTemplate =
-\ "    \n" .
-\ "    /**\n" .
-\ "     * Set %varname%.\n" .
-\ "     *\n" .
-\ "     * @param %vartype% $%varname%\n" .
-\ "     */\n" .
-\ "    public function %funcname%($%varname%)\n" .
-\ "    {\n" .
-\ "        $this->%varname% = $%varname%;\n" .
-\ "    }"
+\"\n" .
+\"/**\n" .
+\" * Set %varname%.\n" .
+\" *\n" .
+\" * @param %vartype% $%varname%\n" .
+\" */\n" .
+\"public function %funcname%($%varname%)\n" .
+\"{\n" .
+\"    $this->%varname% = $%varname%;\n" .
+\"}"

@@ -1,4 +1,4 @@
-" vim-bootstrap
+" vim-bootstrap 
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -102,12 +102,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
 
-" vuejs
-Plug 'posva/vim-vue'
-Plug 'leafOfTree/vim-vue-plugin'
-
-
-
 "*****************************************************************************
 "*****************************************************************************
 
@@ -195,7 +189,7 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-
+  
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -203,7 +197,7 @@ else
       set term=xterm-256color
     endif
   endif
-
+  
 endif
 
 
@@ -527,13 +521,6 @@ vnoremap <leader>rem  :RExtractMethod<cr>
 " typescript
 let g:yats_host_keyword = 1
 
-
-
-" vuejs
-" vim vue
-let g:vue_disable_pre_processors=1
-" vim vue plugin
-let g:vim_vue_plugin_load_full_syntax = 1
 
 
 "*****************************************************************************
