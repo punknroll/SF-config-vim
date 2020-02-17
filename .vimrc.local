@@ -52,9 +52,9 @@ let g:ale_php_phpcs_executable = 'vendor/squizlabs/php_codesniffer/scripts/phpcs
 let g:ale_php_phpmd_executable = 'vendor/phpmd/phpmd/src/bin/phpmd'
 let g:ale_php_phpmd_ruleset= 'phpmd-rule.xml'
 let g:ale_php_langserver_use_global = 1
-let g:ale_php_langserver_executable = '/home/punknroll/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php'
+let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php'
 let g:ale_php_phpstan_level = 5
-let g:ale_twig_twiglint_executable = '/home/punknroll/.composer/vendor/bin/twig-lint'
+let g:ale_twig_twiglint_executable = $HOME.'/.composer/vendor/bin/twig-lint'
 
 let g:ale_javascript_checkers = ['eslint']
 let g:ale_fixers = {
@@ -65,7 +65,7 @@ let g:ale_fixers = {
 \   'html.twig': ['twiglint'],
 \}
 let g:ale_php_cs_fixer_options='--rules=@Symfony'
-let g:ale_php_cs_fixer_executable='/home/punknroll/.composer/vendor/bin/php-cs-fixer'
+let g:ale_php_cs_fixer_executable=$HOME.'/.composer/vendor/bin/php-cs-fixer'
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
 "let g:ale_lint_on_text_changed = 0
@@ -88,8 +88,7 @@ autocmd FileType ezp set textwidth=0
 autocmd FileType xml set textwidth=0
 
 ".editorconfig"
-let g:editorconfig_Beautifier = '.editorconfig'
-let g:editorconfig_Beautifier = '/mnt/data/projects/cadastre/.editorconfig'
+let g:editorconfig_Beautifier = $HOME.'/.editorconfig'
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 
 " this allowes to paste the same from the register multiple times
