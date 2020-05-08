@@ -37,7 +37,7 @@ Plug 'guenti/vim-php-cs-fixer'
 Plug 'https://github.com/vim-scripts/dbext.vim'
 " Plug 'https://github.com/ternjs/tern_for_vim.git'
 "Plug 'mhinz/vim-startify'
-Plug 'chrisbra/csv.vim'
+"Plug 'chrisbra/csv.vim'
 "refactoring for php
 Plug 'punknroll/php-getter-setter.vim'
 " use the fork above as typehinting is implemented in the pull request
