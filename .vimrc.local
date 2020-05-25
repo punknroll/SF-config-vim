@@ -39,7 +39,7 @@ let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "$id$"
 let g:pdv_cfg_Copyright = strftime("%Y%")." Styleflasher"
 let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
-let g:pdv_template_dir = $HOME ."/SF-config-vim/bundle/pdv/templates_snip"
+let g:pdv_template_dir = $HOME.'/SF-config-vim/bundle/pdv/templates_snip'
 
 " ale is the new linter
 let g:ale_linters = {
@@ -102,7 +102,7 @@ autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " this allowes to paste the same from the register multiple times
 " xnoremap p pgvy
 
-au FileType * execute 'setlocal dict+=~/vim-phpqa-dict/dictionary/'.&filetype.'.txt'
+au FileType * execute 'setlocal dict+='.$HOME .'/SF-config-vim/custom-dictionary/'.&filetype.'.txt'
 
 let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
 
@@ -122,7 +122,7 @@ if !exists('g:vdebug_options')
 endif
 let g:vdebug_options.port = 9009
 let g:vdebug_options.ide_key = 'LOCALDEV'
-let g:vdebug_options.path_maps = {'/var/www' : '/mnt/data/projects' }
+let g:vdebug_options.path_maps = {'/var/www' : $HOME.'/projects' }
 
 " PHP Find Implementations
 function! PhpImplementations(word)
