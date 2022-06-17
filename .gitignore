@@ -1,2 +1,4 @@
 plugged
 autoload
+.config/nvim/plugged
+.config/nvim/autoload

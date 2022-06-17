@@ -1,0 +1,202 @@
+" UltiSnips
+let g:snips_author = "Andreas Adelsberger"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+"UltiSnips for angularjs
+let g:UltiSnipsSnippetDirectories = [$HOME ."/.vim/bundle/angular-vim-snippets/UltiSnips", $HOME ."/SF-config-vim/UltiSnips"]
+
+set list            " show hidden characters
+set listchars=nbsp:~    "show strange nbsp chars from text copied out of the web
+set lcs=nbsp:%
+
+" to enable .vimrc per project
+set exrc
+
+" set font one smaller
+set gfn=Hack\ 9
+
+set history=1000
+
+" simply don't
+set nobackup
+set nowritebackup
+set noswapfile
+
+" don't hide quotes in json
+set conceallevel=0
+
+" phpdoc
+"https://github.com/stephpy/vim-phpdoc/blob/master/plugin/phpdoc.vim
+inoremap <C-P> <ESC>:call pdv#DocumentCurrentLine()<CR>i
+nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
+vnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
+let g:pdv_cfg_Author = "Andreas Adelsberger <andreas.adelsberger@styleflasher.at>"
+let g:pdv_cfg_Type = "mixed"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = "$id$"
+let g:pdv_cfg_Copyright = strftime("%Y%")." Styleflasher"
+let g:pdv_cfg_License = "PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}"
+let g:pdv_template_dir = $HOME.'/SF-config-vim/bundle/pdv/templates_snip'
+
+" ale is the new linter
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan'],
+\   'html.twig': ['twiglint'],
+\}
+"let g:ale_linters_explicit = 1
+set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:ale_php_phpcs_standard = 'PSR2'
+"let g:ale_php_phpcs_options = '--extensions=php --report=csv '
+"let g:ale_php_phpcs_executable = 'vendor/squizlabs/php_codesniffer/scripts/phpcs'
+"let g:ale_php_phpmd_executable = 'vendor/phpmd/phpmd/src/bin/phpmd'
+let g:ale_php_phpmd_ruleset= 'phpmd-rule.xml'
+let g:ale_php_langserver_use_global = 1
+let g:ale_php_langserver_executable = $HOME.'/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php'
+let g:ale_php_phpstan_level = 5
+let g:ale_twig_twiglint_executable = $HOME.'/.composer/vendor/bin/twig-lint'
+
+let g:ale_javascript_checkers = ['eslint']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'vue': ['prettier', 'eslint'],
+\   'php': ['php_cs_fixer'],
+\   'html.twig': ['twiglint'],
+\}
+let g:ale_php_cs_fixer_options='--rules=@Symfony'
+let g:ale_php_cs_fixer_executable=$HOME.'/.composer/vendor/bin/php-cs-fixer'
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+"let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+let g:ale_keep_list_window_open = 0
+
+"php autocomplete fix find tag in static function calls
+au BufRead,BufNewFile *.ini.append.*.php set filetype=ezpini
+au BufRead,BufNewFile *.ini.append.php set filetype=ezpini
+au BufRead,BufNewFile *.ts set filetype=xml
+autocmd FileType php setlocal iskeyword-=58
+autocmd FileType ezp set textwidth=0
+autocmd FileType xml set textwidth=0
+
+".editorconfig"
+let g:editorconfig_Beautifier = $HOME.'/.editorconfig'
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+
+" this allowes to paste the same from the register multiple times
+" xnoremap p pgvy
+
+au FileType * execute 'setlocal dict+='.$HOME .'/SF-config-vim/custom-dictionary/'.&filetype.'.txt'
+
+let $PATH=$PATH . ':' . expand('~/.composer/vendor/bin')
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+" markdown preview plugin
+let vim_markdown_preview_hotkey='<C-m>'
+
+" xdebug with vdebug
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+let g:vdebug_options.port = 9009
+let g:vdebug_options.ide_key = 'LOCALDEV'
+let g:vdebug_options.path_maps = {'/var/www' : $HOME.'/projects' }
+
+" PHP Find Implementations
+function! PhpImplementations(word)
+    exe 'Ack "implements.*' . a:word . ' *($|{)"'
+endfunction
+
+" PHP Find Subclasses
+function! PhpSubclasses(word)
+    exe 'Ack "extends.*' . a:word . ' *($|{)"'
+endfunction
+
+noremap <Leader>fi :call PhpImplementations('<cword>')<CR>
+noremap <Leader>fe :call PhpSubclasses('<cword>')<CR>
+" PHP Find Usage
+function! PhpUsage(word)
+    exe 'Ack "::' . a:word . '\(|>' . a:word . '\("'
+endfunction
+
+noremap <Leader>fu :call PhpUsage('<cword>')<CR>
+
+" php actor mappings
+" PHP actor is by far the most advanced tool for php. Autocompletion and
+" Navigation works way better as phplanguageserver as local var comments
+" aren't supported. Use the mappings below for php.
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+
+" Goto definition of class or class member under the cursor
+nmap <Leader>o :call phpactor#GotoDefinition()<CR>
+
+" Find preference
+nmap <Leader>r :call phpactor#FindReferences()<CR>
+
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
+
+" Transform the classes in the current file
+nmap <Leader>tt :call phpactor#Transform()<CR>
+
+" Generate a new class (replacing the current file)
+nmap <Leader>cc :call phpactor#ClassNew()<CR>
+
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+
+" Extract method from selection
+vmap <silent><Leader>es :<C-U>call phpactor#ExtractMethod()<CR>
+
+
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+let g:phpactorOmniError = v:true
+let g:phpactorOmniAutoClassImport = v:true
+
+" use this as you use autoindention
+let g:phpgetset_setterTemplate =
+\"\n" .
+\"/**\n" .
+\" * Set %varname%.\n" .
+\" *\n" .
+\" * @param %vartype% $%varname%\n" .
+\" */\n" .
+\"public function %funcname%($%varname%)\n" .
+\"{\n" .
+\"    $this->%varname% = $%varname%;\n" .
+\"}"
+
+" vimtex ist not compatible with LaTex-Box
+let g:polyglot_disabled = ['latex']
